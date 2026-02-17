@@ -1,38 +1,47 @@
 <?php
 session_start();
-
-require_once __DIR__ . '/../models/FamilyRequestModel.php';
+require_once __DIR__ . '/../config/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $uploadName = null;
+    $proofName = null;
 
+    // file upload (optional)
     if (!empty($_FILES['proof_file']['name'])) {
-        $uploadDir = "../uploads/";
-        if (!is_dir($uploadDir)) {
-            mkdir($uploadDir);
-        }
+        $dir = "../uploads/";
+        if (!is_dir($dir)) mkdir($dir);
 
-        $uploadName = time() . "_" . $_FILES['proof_file']['name'];
+        $proofName = time() . "_" . $_FILES['proof_file']['name'];
         move_uploaded_file(
             $_FILES['proof_file']['tmp_name'],
-            $uploadDir . $uploadName
+            $dir . $proofName
         );
     }
 
-    $data = [
-        'user_id' => $_SESSION['user_id'],
-        'request_type' => $_POST['request_type'],
-        'family_name' => $_POST['family_name'] ?? null,
-        'join_family_id' => $_POST['join_family_id'] ?? null,
-        'relationship' => $_POST['relationship'],
-        'contact' => $_POST['family_contact'],
-        'address' => $_POST['family_address'],
-        'is_head' => isset($_POST['is_head']) ? 1 : 0,
-        'proof_file' => $uploadName
-    ];
+    // detect which form
+    $familyName = $_POST['family_name']
+        ?? $_POST['family_lookup']
+        ?? null;
 
-    FamilyRequestModel::createRequest($data);
+    $address = $_POST['family_address'] ?? null;
+
+    $barangay = $_POST['barangay'] ?? null;
+
+    $sql = "INSERT INTO family_requests
+            (requested_by, family_name, address, barangay, proof_file, status)
+            VALUES (?, ?, ?, ?, ?, 'pending')";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param(
+        "issss",
+        $_SESSION['user_id'],
+        $familyName,
+        $address,
+        $barangay,
+        $proofName
+    );
+
+    $stmt->execute();
 
     header("Location: ../profile.php?submitted=1");
     exit;
