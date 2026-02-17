@@ -1,0 +1,251 @@
+/* ================= RESET + BASE ================= */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to bottom, #ffffff, #ffffff);
+}
+
+body.dark-mode {
+    background: linear-gradient(to bottom, #0f172a, #020617);
+}
+
+.resource-container {
+    padding: 140px 40px 60px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* ================= SEARCH BAR ================= */
+.search-bar {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 30px;
+    border: 1px solid #dfe6ec;
+    font-size: 16px;
+    margin-bottom: 22px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+body.dark-mode .search-bar {
+    background: #020617;
+    color: #e5e7eb;
+    border: 1px solid #334155;
+}
+
+/* ================= FILTER BUTTONS ================= */
+.filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.filter {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 22px;
+    background: #e7eef4;
+    color: #333;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.2s ease;
+}
+
+.filter:hover {
+    background: #d6e3ef;
+}
+
+.filter.active {
+    background: #b4cbc7;
+    color: #1b4d1b;
+    border: 1px solid #5d8083;
+}
+
+body.dark-mode .filter {
+    background: #1e293b;
+    color: #e5e7eb;
+}
+
+body.dark-mode .filter:hover {
+    background: #334155;
+}
+
+body.dark-mode .filter.active {
+    background: #38bdf8;
+    color: #020617;
+    border-color: #38bdf8;
+}
+
+.filter-label {
+    margin: 10px 0 6px;
+    font-weight: 600;
+    color: #2f3b44;
+}
+
+body.dark-mode .filter-label {
+    color: #e5e7eb;
+}
+
+/* ================= SECTION TITLE ================= */
+.section-title {
+    margin-bottom: 18px;
+    color: #2f3b44;
+}
+
+body.dark-mode .section-title {
+    color: #e5e7eb;
+}
+
+/* ================= GRID + CARDS ================= */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    padding: 18px;
+    border-radius: 18px;
+    border: 1px solid #5d8083;
+    box-shadow: 0px 3px 8px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    min-height: 150px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 6px 14px rgba(0,0,0,0.12);
+}
+
+.card h4 {
+    margin: 6px 0;
+    color: #2b3742;
+}
+
+.card p {
+    margin: 4px 0;
+    color: #4a5a68;
+}
+
+.hospital, .food, .water, .shelter { 
+    background: #ffffff; 
+}
+
+/* DARK MODE CARDS */
+body.dark-mode .card {
+    background: #020617;
+    border-color: #334155;
+    box-shadow: 0px 4px 14px rgba(0,0,0,0.6);
+}
+
+body.dark-mode .card h4 {
+    color: #f9fafb;
+}
+
+body.dark-mode .card p {
+    color: #cbd5f5;
+}
+
+body.dark-mode .hospital,
+body.dark-mode .food,
+body.dark-mode .water,
+body.dark-mode .shelter {
+    background: #020617;
+}
+
+/* ================= CARD BUTTONS ================= */
+.card button {
+    width: 100%;
+    padding: 11px;
+    border: none;
+    border-radius: 22px;
+    background: #c8f2c8;
+    color: #1f5b1f;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+    margin-top: auto;
+    border: 1px solid #9fdc9f;
+}
+
+.card button:hover {
+    background: #aee7ae;
+    border-color: #7fcf7f;
+}
+
+body.dark-mode .card button {
+    background: #22c55e;
+    color: #022c22;
+    border-color: #22c55e;
+}
+
+body.dark-mode .card button:hover {
+    background: #16a34a;
+}
+
+/* ================= MOBILE STYLES ================= */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    .resource-container {
+        padding: 110px 14px 40px;
+        max-width: 100%;
+    }
+
+    .search-bar {
+        padding: 12px 14px;
+        font-size: 14px;
+        border-radius: 22px;
+        margin-bottom: 16px;
+    }
+
+    .filters {
+        gap: 8px;
+        margin-bottom: 18px;
+    }
+
+    .filter {
+        padding: 8px 14px;
+        font-size: 13px;
+        border-radius: 18px;
+    }
+
+    .section-title {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .card {
+        padding: 14px;
+        border-radius: 14px;
+        min-height: auto;
+    }
+
+    .card h4 {
+        font-size: 15px;
+    }
+
+    .card p {
+        font-size: 13px;
+    }
+
+    .card button {
+        padding: 10px;
+        font-size: 13px;
+        border-radius: 18px;
+    }
+
+    .filter-label {
+        font-size: 14px;
+        margin: 8px 0 4px;
+    }
+}

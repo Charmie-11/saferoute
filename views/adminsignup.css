@@ -1,0 +1,154 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* PAGE BG */
+.signup-page{
+  background:#e9eeec;
+  min-height:100vh;
+}
+
+/* LAYOUT */
+.signin-container{
+  display:grid;
+  grid-template-columns:520px 1fr;
+  min-height:100vh;
+}
+
+/* =========================
+   LEFT FORM
+========================= */
+
+.form-section{
+  background:#e9eeec;
+  padding:90px 70px;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.form-section h1{
+  font-size:36px;
+  font-weight:800;
+  color:#1e2d27;
+  margin-bottom:6px;
+}
+
+.subtitle{
+  font-size:14px;
+  color:#7c8a84;
+  margin-bottom:28px;
+}
+
+/* INPUT GROUP */
+
+.input-group{
+  margin-bottom:14px;
+}
+
+.input-group label{
+  display:block;
+  font-size:13px;
+  margin-bottom:6px;
+  color:#37433f;
+}
+
+.input-group input{
+  width:100%;
+  height:42px;
+  padding:0 14px;
+
+  border-radius:10px;
+  border:1px solid #d7ddda;
+  background:#f3f5f4;
+
+  font-size:14px;
+}
+
+.input-group input:focus{
+  outline:none;
+  border-color:#2f5f4f;
+  background:white;
+}
+
+/* LOGIN LINK */
+
+.login-link{
+  font-size:13px;
+  margin:14px 0 18px;
+  color:#6b7772;
+}
+
+.login-link a{
+  color:#2f5f4f;
+  text-decoration:none;
+  font-weight:600;
+}
+
+/* BUTTON */
+
+.signup-btn{
+  width:180px;
+  height:44px;
+
+  border:none;
+  border-radius:28px;
+
+  background:#2f5f4f;
+  color:white;
+
+  font-size:14px;
+  font-weight:700;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.signup-btn:hover{
+  transform:translateY(-1px);
+  opacity:.95;
+}
+
+
+.image-section{
+  height:100%;
+}
+
+.image-section img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 900px){
+
+  .signup-container{
+    grid-template-columns:1fr;
+    padding:24px;
+  }
+
+  .form-section{
+    background:white;
+    border-radius:20px;
+    box-shadow:0 20px 40px rgba(0,0,0,.08);
+    padding:40px 26px;
+    max-width:480px;
+    margin:auto;
+  }
+
+  .signup-btn{
+    width:100%;
+  }
+
+  .image-section{
+    display:none;
+  }
+}
+
