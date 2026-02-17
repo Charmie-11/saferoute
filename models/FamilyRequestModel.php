@@ -7,25 +7,19 @@ class FamilyRequestModel {
         global $conn;
 
         $sql = "INSERT INTO family_requests
-        (user_id, request_type, family_name, join_family_id,
-         relationship, contact, address, is_head, proof_file)
-        VALUES (?,?,?,?,?,?,?,?,?)";
+                (requested_by, family_name, address, barangay, proof_file, status)
+                VALUES (?, ?, ?, ?, ?, 'pending')";
 
         $stmt = $conn->prepare($sql);
         $stmt->bind_param(
-            "ississsis",
-            $data['user_id'],
-            $data['request_type'],
+            "issss",
+            $data['requested_by'],
             $data['family_name'],
-            $data['join_family_id'],
-            $data['relationship'],
-            $data['contact'],
             $data['address'],
-            $data['is_head'],
+            $data['barangay'],
             $data['proof_file']
         );
 
         return $stmt->execute();
     }
-
 }
